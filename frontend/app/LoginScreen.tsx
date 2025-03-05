@@ -45,10 +45,10 @@ const LoginScreen = () => {
             <Input variant="outline" borderColor="blue500">
               <InputField placeholder="Password" secureTextEntry />
             </Input>
-            <Button bg="blue600" mt={4}>
-              <Text color="white">Login</Text>
-            </Button>
-          </VStack>
+              <Button bg="blue600" mt={4} onPress={() => router.push('/patientDashboard')}>
+                <Text color="white">Login</Text>
+              </Button>
+            </VStack>
 
           {/* Clickable Sign-Up Text */}
           <Pressable onPress={() => router.push('/patient-signup')}>

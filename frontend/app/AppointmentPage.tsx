@@ -5,6 +5,27 @@ import {
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useLocalSearchParams } from "expo-router";
 
+import * as Device from 'expo-device';
+import * as Notifications from 'expo-notifications';
+import Constants from 'expo-constants';
+
+export interface PushNotificationState {
+  notification?: Notifications.Notification;
+  expoPushToken?: Notifications.ExpoPushToken;
+}
+
+export const UsePushNotifications = (): PushNotificationState => {
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldPlaySound: false,
+      shouldShowAlert: true,
+      shouldSetBadge: false,
+    }),
+  });
+
+  return {};
+};
+
 const AppointmentPage = () => {
   const { name, speciality, location, rating } = useLocalSearchParams();
   
@@ -112,10 +133,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#f9f9f9"
   },
   availableButton: {
-    backgroundColor: "#ff8c00",
+    backgroundColor: "#007BFF",
     paddingVertical: 10,
     paddingHorizontal: 15,
-    borderRadius: 25,
     marginTop: 12,
     alignSelf: "center",
     elevation: 3,
@@ -128,7 +148,6 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 15,
     marginTop: 10,
-    borderRadius: 25,
     alignSelf: "center",
     elevation: 3,
     shadowColor: "#000",
@@ -141,7 +160,6 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 20,
     marginTop: 15,
-    borderRadius: 25,
     alignSelf: "center",
     elevation: 3,
     shadowColor: "#000",
