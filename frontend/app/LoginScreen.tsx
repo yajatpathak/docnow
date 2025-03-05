@@ -1,8 +1,12 @@
 import React from 'react';
-import { GluestackUIProvider, Box, Button, Input, InputField, VStack, Text, Heading } from '@gluestack-ui/themed';
+import { GluestackUIProvider, Box, Button, Input, InputField, VStack, Text, Heading, Pressable } from '@gluestack-ui/themed';
 import { config } from '@gluestack-ui/config';
+import { useRouter } from 'expo-router';  // Import useRouter for navigation
+import {Image} from 'react-native';
 
 const LoginScreen = () => {
+  const router = useRouter();  // Initialize router
+
   return (
     <GluestackUIProvider config={config}>
       <Box flex={1} justifyContent="center" alignItems="center" bg="white">
@@ -18,6 +22,19 @@ const LoginScreen = () => {
           shadowOpacity={0.2}
           shadowRadius={4}
         >
+          {/* Logo Image */}
+          <Image
+            source={require('../assets/images/DocNowLogo.png')}
+            style={{
+              width: "40%", // Adjust width for responsiveness
+              height: "20%", // Adjust height accordingly
+              marginBottom: 10,
+              alignSelf: "center", // Center the image inside the Box
+              resizeMode: "contain", // Ensure proper scaling
+            }}
+            alt="DocNow Symbol"
+          />
+
           <Heading size="lg" color="blue700" textAlign="center" mb={4}>
             Welcome Back
           </Heading>
@@ -32,9 +49,14 @@ const LoginScreen = () => {
               <Text color="white">Login</Text>
             </Button>
           </VStack>
-          <Text textAlign="center" mt={3} color="blue700">
-            Don't have an account? Sign up
-          </Text>
+
+          {/* Clickable Sign-Up Text */}
+          <Pressable onPress={() => router.push('/patient-signup')}>
+            <Text textAlign="center" mt={3} color="blue700" underline>
+              Don't have an account? Sign up
+            </Text>
+          </Pressable>
+
         </Box>
       </Box>
     </GluestackUIProvider>
