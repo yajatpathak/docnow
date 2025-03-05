@@ -35,3 +35,25 @@
    ```bash
    python manage.py runserver
    ```
+
+---
+
+### Steps to Run Frontend
+
+1. **Move to the frontend directory:**
+
+   ```bash
+   cd frontend
+   ```
+
+2. Install dependencies
+
+   ```bash
+   npm install
+   ```
+
+3. Start the app
+
+   ```bash
+    npx expo start
+   ```
