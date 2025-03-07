@@ -1,6 +1,6 @@
 # DocNow
 
-### [Presentation](./presentation.pdf)
+### [Presentation](./docs/presentation.pdf)
 
 ---
 
